@@ -1,0 +1,59 @@
+﻿<Window x:Class="lab_1C.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_1C"
+        mc:Ignorable="d"
+        Title="Piłkarze" Height="450" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Label x:Name="LabelImie" Content="Imię" Margin="10,0,10,0"/>
+            <local:TextBoxWithErrorProvider x:Name="textBoxWEPImie" Margin="10,0,10,0"/>
+            <Label x:Name="LabelNazwisko" Content="Nazwisko" Margin="10,10,10,0"/>
+            <local:TextBoxWithErrorProvider x:Name="textBoxWEPNazwisko" Margin="10,0,10,0"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="LabelWiek" Grid.Column="0" Content="Wiek:" Margin="10,0,10,0"/>
+                <Label x:Name="LabelWiekLiczba" Grid.Column="1" Content="{Binding Path=Value,ElementName=sliderWiek}" Margin="0,0,10,0"/>
+            </Grid>
+
+            <Slider x:Name="sliderWiek" Margin="10,10,10,0" Value="25" Minimum="18" Maximum="99" 
+                    TickFrequency="1" IsSnapToTickEnabled="True"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="LabelWaga" Grid.Column="0" Content="Waga:" Margin="10,0,10,0"/>
+                <Label x:Name="LabelWagaLiczba" Grid.Column="1" Content="{Binding Path=Value,ElementName=sliderWaga}" Margin="0,0,10,0"/>
+            </Grid>
+            <Slider x:Name="sliderWaga" Margin="10,10,10,0" Value="80" Minimum="50" Maximum="120" 
+                    TickFrequency="1" IsSnapToTickEnabled="True"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="buttonEdytuj" Grid.Column="1" Content="Edytuj" Margin="10,10,10,0" Click="buttonEdytuj_Click" IsEnabled="False"/>
+                <Button x:Name="buttonDodaj" Grid.Column="0" Content="Dodaj" Margin="10,10,10,0" Click="buttonDodaj_Click" />
+                <Button x:Name="buttonUsun" Grid.Column="2" Content="Usuń" Margin="10,10,10,0" Click="buttonUsun_Click" IsEnabled="False"/>
+            </Grid>
+
+        </StackPanel>
+        <ListBox x:Name="listBoxPilkarze" 
+                 Grid.Row="0" Grid.Column="1" 
+                 Margin="10" FontSize="15" 
+                 SelectionChanged="listBoxPilkarze_SelectionChanged"
+        />
+
+    </Grid>
+</Window>
